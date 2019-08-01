@@ -1,15 +1,27 @@
 from .exceptions import *
+from random import choice
 
 # Complete with your own, just for fun :)
 LIST_OF_WORDS = []
 
 
 def _get_random_word(list_of_words):
-    pass
+
+    if not list_of_words:
+        raise InvalidListOfWordsException()
+
+    return choice(list_of_words)
 
 
 def _mask_word(word):
-    pass
+
+    if not word:
+        raise InvalidWordException()
+
+    else:
+        masked_word = '*' * len(word)
+
+    return masked_word
 
 
 def _uncover_word(answer_word, masked_word, character):

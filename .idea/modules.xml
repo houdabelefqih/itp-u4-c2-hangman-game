@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../class-8-json-todo/.idea/class-8-json-todo.iml" filepath="$PROJECT_DIR$/../class-8-json-todo/.idea/class-8-json-todo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/itp-u4-c2-hangman-game.iml" filepath="$PROJECT_DIR$/.idea/itp-u4-c2-hangman-game.iml" />
+    </modules>
+  </component>
+</project>
