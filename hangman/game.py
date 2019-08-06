@@ -25,11 +25,54 @@ def _mask_word(word):
 
 
 def _uncover_word(answer_word, masked_word, character):
-    pass
+
+    if not answer_word or not masked_word :
+        raise InvalidWordException()
+
+    elif len(answer_word) != len(masked_word):
+        raise InvalidWordException()
+
+    elif len(character) != 1:
+        raise InvalidGuessedLetterException()
+
+    else:
+
+        answer_word = answer_word.lower()
+        character = character.lower()
+
+        if character in answer_word:
+            for index, letter in enumerate(answer_word):
+                if letter == character:
+                    masked_word = masked_word[:index] + character + masked_word[index+1:]
+
+    return masked_word
 
 
 def guess_letter(game, letter):
-    pass
+
+    if game['remaining_misses'] <= 0 or '*' not in game['masked_word']:
+        raise GameFinishedException()
+
+    else:
+        answer_word = game['answer_word']
+        masked_word = game['masked_word']
+
+        new_masked_word = _uncover_word(answer_word, masked_word, letter)
+        game['masked_word'] = new_masked_word
+
+        if new_masked_word == answer_word:
+            raise GameWonException()
+
+        else:
+
+            if letter not in game['previous_guesses']:
+                game['previous_guesses'].append(letter.lower())
+
+            if new_masked_word == masked_word:
+                game['remaining_misses'] -= 1
+
+            if game['remaining_misses'] == 0:
+                raise GameLostException()
 
 
 def start_new_game(list_of_words=None, number_of_guesses=5):
